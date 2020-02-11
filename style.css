@@ -1,0 +1,227 @@
+/* General */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #1a1a1b;
+  font-family: "IBM Plex Sans", sans-serif;
+  position: relative;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.PageColumns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Left container */
+
+.PageColumn_left {
+  width: 156px;
+}
+
+.Art {
+  background-image: url("./assets/art.png");
+  height: 100vh;
+  min-height: 450px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Right container */
+
+.PageColumn_right {
+  width: 100%;
+}
+
+.ColumnContainer {
+  padding: 24px;
+  min-width: 260px;
+  max-width: 440px;
+}
+
+.SnooIcon::before {
+  display: block;
+  width: 40px;
+  height: 40px;
+  content: url("./assets/snoo.svg");
+  margin-bottom: 8px;
+}
+
+.Title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  margin: 20px 0;
+}
+
+.AnimatedForm > fieldset.field {
+  position: relative;
+}
+
+.AnimatedForm > fieldset.field + fieldset.field {
+  margin-top: 24px;
+}
+
+.AnimatedForm > fieldset.field::before {
+  position: absolute;
+  display: block;
+  content: "";
+  transition: all .2s ease-in-out;
+  transform: translate3d(5px, 0, 0);
+  opacity: 0;
+  z-index: 1;
+  right: 14px;
+  top: 18px;
+  height: 10px;
+  width: 12px;
+  background: url("./assets/check.svg")
+}
+
+.AnimatedForm > fieldset.field > input.textInput {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  outline: 0;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: all .2s ease-in-out;
+  height: 48px;
+  padding: 22px 12px 10px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 4px;
+  background-color: #fcfcfb;
+}
+
+.AnimatedForm > fieldset.field > input.textInput:focus,
+.AnimatedForm > fieldset.field > input.textInput:hover {
+  border-color: rgba(0,0,0,.2);
+  outline: 0;
+  background: #fff;
+}
+
+.AnimatedForm > fieldset.field > input.textInput:focus {
+  border-color: #24a0ed;
+}
+
+.AnimatedForm > fieldset.field > input.textInput:focus+label.textInputLabel,
+.AnimatedForm > fieldset.field > input.textInput:hover+label.textInputLabel {
+  -webkit-transform: translate3d(0,-8px,0) scale(.83333333);
+  transform: translate3d(0,-8px,0) scale(.83333333);
+  line-height: 14px;
+}
+
+.AnimatedForm > fieldset.field > input.textInput:focus+label.textInputLabel::after,
+.AnimatedForm > fieldset.field > input.textInput:hover+label.textInputLabel::after {
+  content: "";
+}
+
+.AnimatedForm > fieldset.field > label.textInputLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  line-height: 23px;
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  top: 14px;
+  left: 12px;
+  color: #a5a4a4;
+  text-transform: uppercase;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  transition: all .2s ease-in-out;
+  pointer-events: none;
+}
+
+.AnimatedForm > fieldset.field > label.textInputLabel::after {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 7px;
+  content: "\2022";
+  color: #24a0ed;
+}
+
+.hideable {
+  max-height: 1000px;
+  opacity: 1;
+  transition: opacity .25s ease-in;
+}
+
+.AnimatedForm > fieldset.field > button.submitButton {
+  -webkit-appearance: button;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: #fff;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  background: #0079d3;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: unset;
+  height: 35px;
+  width: 155px;
+  min-width: 155px;
+  overflow: inherit;
+  position: relative;
+}
+
+.BottomText {
+  font-size: 12px;
+  font-weight: 400px;
+  line-height: 18px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.BottomText > a.secondary {
+  text-transform: none;
+  font-size: 12px;
+  letter-spacing: .5px;
+  line-height: 24px;
+  color: #0079d3;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.BottomText > a.SignUp:hover,
+.BottomText > a.secondary:hover {
+  color: #3394dc;
+}
+
+.BottomText > a.SignUp {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  line-height: 24px;
+  text-transform: uppercase;
+  font-family: "IBM Plex Sans", sans-serif;
+  text-decoration: none;
+  color: #0079d3;
+}
