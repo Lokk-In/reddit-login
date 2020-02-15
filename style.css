@@ -73,15 +73,15 @@ fieldset {
   margin: 20px 0;
 }
 
-.AnimatedForm > fieldset.field {
+.AnimatedForm>fieldset.field {
   position: relative;
 }
 
-.AnimatedForm > fieldset.field + fieldset.field {
+.AnimatedForm>fieldset.field+fieldset.field {
   margin-top: 24px;
 }
 
-.AnimatedForm > fieldset.field::before {
+.AnimatedForm>fieldset.field::before {
   position: absolute;
   display: block;
   content: "";
@@ -96,7 +96,22 @@ fieldset {
   background: url("./assets/check.svg")
 }
 
-.AnimatedForm > fieldset.field > input.textInput {
+.AnimatedForm>fieldset.field::after {
+  position: absolute;
+  display: block;
+  content: "";
+  transition: all .2s ease-in-out;
+  -webkit-transform: translate3d(5px, 0, 0);
+  transform: translate3d(5px, 0, 0);
+  opacity: 0;
+  right: 19px;
+  top: 18.5px;
+  height: 11px;
+  width: 2px;
+  background: url("./assets/error.svg");
+}
+
+.AnimatedForm>fieldset.field>input.textInput {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   outline: 0;
@@ -106,35 +121,54 @@ fieldset {
   transition: all .2s ease-in-out;
   height: 48px;
   padding: 22px 12px 10px;
-  border: 1px solid rgba(0,0,0,.1);
+  border: 1px solid rgba(0, 0, 0, .1);
   border-radius: 4px;
   background-color: #fcfcfb;
 }
 
-.AnimatedForm > fieldset.field > input.textInput:focus,
-.AnimatedForm > fieldset.field > input.textInput:hover {
-  border-color: rgba(0,0,0,.2);
+.AnimatedForm>fieldset.field>input.textInput:focus,
+.AnimatedForm>fieldset.field>input.textInput:hover {
+  border-color: rgba(0, 0, 0, .2);
   outline: 0;
   background: #fff;
 }
 
-.AnimatedForm > fieldset.field > input.textInput:focus {
+.AnimatedForm>fieldset.field>input.textInput:focus {
   border-color: #24a0ed;
 }
 
-.AnimatedForm > fieldset.field > input.textInput:focus+label.textInputLabel,
-.AnimatedForm > fieldset.field > input.textInput:hover+label.textInputLabel {
-  -webkit-transform: translate3d(0,-8px,0) scale(.83333333);
-  transform: translate3d(0,-8px,0) scale(.83333333);
+.AnimatedForm>fieldset.field>input.textInput:focus+label.textInputLabel,
+.AnimatedForm>fieldset.field>input.textInput:hover+label.textInputLabel,
+.AnimatedForm>fieldset.field>input.textInput.hasInput+label.textInputLabel {
+  -webkit-transform: translate3d(0, -8px, 0) scale(.83333333);
+  transform: translate3d(0, -8px, 0) scale(.83333333);
   line-height: 14px;
 }
 
-.AnimatedForm > fieldset.field > input.textInput:focus+label.textInputLabel::after,
-.AnimatedForm > fieldset.field > input.textInput:hover+label.textInputLabel::after {
+.AnimatedForm>fieldset.field>input.textInput:focus+label.textInputLabel::after,
+.AnimatedForm>fieldset.field>input.textInput:hover+label.textInputLabel::after,
+.AnimatedForm>fieldset.field>input.textInput.hasInput+label.textInputLabel::after {
   content: "";
 }
 
-.AnimatedForm > fieldset.field > label.textInputLabel {
+.AnimatedForm>fieldset.field>.Error {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-top: 4px;
+  max-height: 1000px;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+  display: none;
+  color: #ea0027;
+}
+
+.AnimatedForm>fieldset.field.invalid>.Error {
+  opacity: 1;
+  display: block;
+}
+
+.AnimatedForm>fieldset.field>label.textInputLabel {
   font-size: 10px;
   font-weight: 600;
   letter-spacing: .5px;
@@ -154,7 +188,7 @@ fieldset {
   pointer-events: none;
 }
 
-.AnimatedForm > fieldset.field > label.textInputLabel::after {
+.AnimatedForm>fieldset.field>label.textInputLabel::after {
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
@@ -165,13 +199,30 @@ fieldset {
   color: #24a0ed;
 }
 
+.AnimatedForm>fieldset.field.invalid::after,
+.AnimatedForm>fieldset.field.valid::before {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  opacity: 1;
+}
+
+.AnimatedForm>fieldset.field.valid>input.textInput {
+  border-color: #24a0ed;
+  padding-right: 36px;
+}
+
+.AnimatedForm>fieldset.field.invalid>input.textInput {
+  padding-right: 36px;
+  border-color: #ea0027;
+}
+
 .hideable {
   max-height: 1000px;
   opacity: 1;
   transition: opacity .25s ease-in;
 }
 
-.AnimatedForm > fieldset.field > button.submitButton {
+.AnimatedForm>fieldset.field>button.submitButton {
   -webkit-appearance: button;
   font-weight: 600;
   letter-spacing: .5px;
@@ -200,7 +251,7 @@ fieldset {
   font-family: "Noto Sans", sans-serif;
 }
 
-.BottomText > a.secondary {
+.BottomText>a.secondary {
   text-transform: none;
   font-size: 12px;
   letter-spacing: .5px;
@@ -210,12 +261,12 @@ fieldset {
   background-color: transparent;
 }
 
-.BottomText > a.SignUp:hover,
-.BottomText > a.secondary:hover {
+.BottomText>a.SignUp:hover,
+.BottomText>a.secondary:hover {
   color: #3394dc;
 }
 
-.BottomText > a.SignUp {
+.BottomText>a.SignUp {
   font-size: 12px;
   font-weight: 900;
   letter-spacing: .5px;

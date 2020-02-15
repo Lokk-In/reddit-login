@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
 </head>
 
 <body>
@@ -22,12 +23,13 @@
           <div class="SnooIcon"></div>
           <h1 class="Title">Sign in</h1>
           <form action="#" class="AnimatedForm" method="POST">
-            <fieldset class="field hideable">
-              <input type="text" id="loginUsername" class="textInput">
+            <fieldset class="field hideable" id="username">
+              <input type="text" id="loginUsername" class="textInput" onblur="checkInput(this)">
               <label for="loginUsername" class="textInputLabel">Username</label>
+              <div class="Error">Username must be between 3 and 20 characters</div>
             </fieldset>
             <fieldset class="field hideable">
-              <input type="password" id="loginPassword" class="textInput">
+              <input type="password" id="loginPassword" class="textInput" onblur="checkInput(this)">
               <label for="loginPassword" class="textInputLabel">Password</label>
             </fieldset>
             <fieldset class="field">
